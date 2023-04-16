@@ -1,7 +1,27 @@
 import React, {useState,useEffect} from 'react'
-import axios from "axios"
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
 
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBcGrRUCkZCmcX3pBiWUISZq1mRVI-_3C4",
+  authDomain: "save-a-can.firebaseapp.com",
+  projectId: "save-a-can",
+  storageBucket: "save-a-can.appspot.com",
+  messagingSenderId: "1015971610708",
+  appId: "1:1015971610708:web:66ab57fde341f945f7adc1",
+  measurementId: "G-TMFNT7T58V"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+let user;
 
 const LoginPage = () => {
     const [FirstName, setFirstName] = useState("")
@@ -14,20 +34,23 @@ const LoginPage = () => {
         console.log("EVENT", event.target)
         event.preventDefault()
 
-       await axios.post("http://localhost:8080/api/users/login", {
-            Email, 
-            Password
-        }).then(res => {
-            if (!res.data.error) {
-                localStorage.setItem("userId", res.data.user.id)
-                window.location.href = "/"
+        signInWithEmailAndPassword(auth, Email, Password)
+        .then((userCredential) => {
+          // Signed in 
+          user = userCredential.user;
+            auth.onAuthStateChanged(() => {
+            if (user.emailVerified) {
+                console.log('User is logged in!');
+            } else {
+              auth.signOut().then(() => console.log('User signed out!'));
             }
-            console.log(res.data)
-        }).catch(err=> {
-            console.log('====================================')
-            console.log(err.toString())
-            console.log('====================================')
+          })
         })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage)
+        });
     }
 
     const handleOnchnage = (e) => {
@@ -65,7 +88,7 @@ const LoginPage = () => {
                    <input onChange={handleOnchnage} type="email" id="Email" name="signUpEmail" placeholder='Email'/>
                    <input onChange={handleOnchnage} type="password" id="Password" name="signUpPassword" placeholder='Password'/>
                    <a href='/sign-up' style={{textAlign: "end", width: "100%", paddingRight: 30}}>Sign Up</a>
-                   <button>Login</button>
+                   <button type='submit'>Login</button>
                 </form>
             </div>
         </div>

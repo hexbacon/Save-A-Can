@@ -1,6 +1,21 @@
 import React, {useState,useEffect} from 'react'
-import axios from "axios"
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification} from "firebase/auth";
 
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBcGrRUCkZCmcX3pBiWUISZq1mRVI-_3C4",
+    authDomain: "save-a-can.firebaseapp.com",
+    projectId: "save-a-can",
+    storageBucket: "save-a-can.appspot.com",
+    messagingSenderId: "1015971610708",
+    appId: "1:1015971610708:web:66ab57fde341f945f7adc1",
+    measurementId: "G-TMFNT7T58V"
+  };
+
+  // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 //Set up state to hold the user's sign-up information:
 const SignUpPage = (props) => {
@@ -14,23 +29,20 @@ const SignUpPage = (props) => {
         event.preventDefault()
      // prevent the default form submission behavior
 
-     // make a POST request to backend API with the sign-up data
-       await axios.post("http://localhost:8080/api/users", {
-            FirstName, 
-            LastName, 
-            Email, 
-            Password
-        }).then(res => { // handle the response
-            if (!res.data.error) {
-                localStorage.setItem("userId", res.data.user.id)
-                window.location.href = "/"
-            }
-            console.log(res.data)
-        }).catch(err=> { // handle any errors
-            console.log('====================================')
-            console.log(err.toString())
-            console.log('====================================')
-        })
+     createUserWithEmailAndPassword(auth, Email, Password)
+     .then((userCredential) => {
+       // Signed in 
+       let singUser = userCredential.user;
+       sendEmailVerification(singUser);
+     })
+     .catch((error) => {
+       const errorCode = error.code;
+       const errorMessage = error.message;
+       console.log(errorCode, errorMessage)
+       // ..
+     });
+
+
     }
 
     const handleOnchnage = (e) => {

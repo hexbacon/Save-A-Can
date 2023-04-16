@@ -1,7 +1,9 @@
 import React from 'react';
 import videoBg from '../videos/video.mp4'
 import './MissionStyle.css'
+import Map from './Map';
 // import Course from './Course';
+
 
 function StudentsPage(props) {
     return (
@@ -19,6 +21,7 @@ function StudentsPage(props) {
             </div>
         
             {/* <Course/> */}
+            <Map />
         </div>
     );
 }
