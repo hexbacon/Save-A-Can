@@ -15,24 +15,17 @@ import Students from "./pages/StudentsPage"
 import Teachers from "./pages/TeachersPage"
 import Leaders from "./pages/LeadersPage"
 import Events from "./pages/Mission"
+import { AuthProvider } from "./components/auth/Auth"
+import { AuthContextProvider } from "./components/auth/AuthContext"
+import Prediction from "./pages/Predictition"
+import PrivateRoute from "./components/auth/PrivateRoute"
 
-
-const RedirectPage = () => {
-  useEffect(() => {
-      if (localStorage.getItem("userId")) {
-          window.location.href = "/"
-      }
-  },[])
-
-  return (
-      <></>
-  )
-}
 
 const App = () => {
 	return (
 		<div className="App">
 			<Header />
+			<AuthContextProvider>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/about-us" element={<AboutPage />} />
@@ -44,8 +37,10 @@ const App = () => {
 				<Route path="/teachers" element={<Teachers/>}/>
 				<Route path="/leaders" element={<Leaders/>}/>
 				<Route path="/events" element={<Events/>}/>  
-				<Route path="*" element={<RedirectPage />} />
+				
+				<Route path="/prediction" element={<PrivateRoute><Prediction /></PrivateRoute>} />
 			</Routes>
+			</AuthContextProvider>
 			<Footer />
 			
 		</div>

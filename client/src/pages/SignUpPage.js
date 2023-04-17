@@ -1,48 +1,24 @@
 import React, {useState,useEffect} from 'react'
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification} from "firebase/auth";
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBcGrRUCkZCmcX3pBiWUISZq1mRVI-_3C4",
-    authDomain: "save-a-can.firebaseapp.com",
-    projectId: "save-a-can",
-    storageBucket: "save-a-can.appspot.com",
-    messagingSenderId: "1015971610708",
-    appId: "1:1015971610708:web:66ab57fde341f945f7adc1",
-    measurementId: "G-TMFNT7T58V"
-  };
-
-  // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
+import { UserAuth } from '../components/auth/AuthContext'
+import { useNavigate } from 'react-router-dom'
 //Set up state to hold the user's sign-up information:
 const SignUpPage = (props) => {
     const [FirstName, setFirstName] = useState("")
     const [LastName, setLastName] = useState("")
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
-
+    const { createUser } = UserAuth();
+    const navigate = useNavigate();
     const onSubmit = async (event) => {
         console.log("EVENT", event.target)
         event.preventDefault()
-     // prevent the default form submission behavior
-
-     createUserWithEmailAndPassword(auth, Email, Password)
-     .then((userCredential) => {
-       // Signed in 
-       let singUser = userCredential.user;
-       sendEmailVerification(singUser);
-     })
-     .catch((error) => {
-       const errorCode = error.code;
-       const errorMessage = error.message;
-       console.log(errorCode, errorMessage)
-       // ..
-     });
-
-
+        // prevent the default form submission behavior
+        try {
+            await createUser(Email, Password);
+            navigate('/prediction');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const handleOnchnage = (e) => {

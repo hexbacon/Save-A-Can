@@ -1,56 +1,23 @@
 import React, {useState,useEffect} from 'react'
-import { Routes, Route, Link, Navigate } from 'react-router-dom';
-
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBcGrRUCkZCmcX3pBiWUISZq1mRVI-_3C4",
-  authDomain: "save-a-can.firebaseapp.com",
-  projectId: "save-a-can",
-  storageBucket: "save-a-can.appspot.com",
-  messagingSenderId: "1015971610708",
-  appId: "1:1015971610708:web:66ab57fde341f945f7adc1",
-  measurementId: "G-TMFNT7T58V"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-let user;
+import {useNavigate } from 'react-router-dom';
+import { UserAuth } from '../components/auth/AuthContext';
 
 const LoginPage = () => {
     const [FirstName, setFirstName] = useState("")
     const [LastName, setLastName] = useState("")
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
-
-
+    const { signIn } = UserAuth();
+    const navigate = useNavigate();
     const onSubmit = async (event) => {
         console.log("EVENT", event.target)
         event.preventDefault()
-
-        signInWithEmailAndPassword(auth, Email, Password)
-        .then((userCredential) => {
-          // Signed in 
-          user = userCredential.user;
-            auth.onAuthStateChanged(() => {
-            if (user.emailVerified) {
-                console.log('User is logged in!');
-            } else {
-              auth.signOut().then(() => console.log('User signed out!'));
-            }
-          })
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode, errorMessage)
-        });
+        try {
+            await signIn(Email, Password);
+            navigate('/prediction');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const handleOnchnage = (e) => {
@@ -88,7 +55,7 @@ const LoginPage = () => {
                    <input onChange={handleOnchnage} type="email" id="Email" name="signUpEmail" placeholder='Email'/>
                    <input onChange={handleOnchnage} type="password" id="Password" name="signUpPassword" placeholder='Password'/>
                    <a href='/sign-up' style={{textAlign: "end", width: "100%", paddingRight: 30}}>Sign Up</a>
-                   <button type='submit'>Login</button>
+                   <button>Login</button>
                 </form>
             </div>
         </div>

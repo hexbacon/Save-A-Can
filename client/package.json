@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^2.18.1",
+    "@tensorflow/tfjs": "^4.4.0",
     "axios": "^1.3.4",
     "firebase": "^9.19.1",
     "react": "^17.0.2",
