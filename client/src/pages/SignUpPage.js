@@ -9,6 +9,7 @@ const SignUpPage = (props) => {
     const [Password, setPassword] = useState("")
     const { createUser } = UserAuth();
     const navigate = useNavigate();
+
     const onSubmit = async (event) => {
         console.log("EVENT", event.target)
         event.preventDefault()

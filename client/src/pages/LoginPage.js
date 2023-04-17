@@ -8,6 +8,7 @@ const LoginPage = () => {
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
     const { signIn } = UserAuth();
+    
     const navigate = useNavigate();
     const onSubmit = async (event) => {
         console.log("EVENT", event.target)

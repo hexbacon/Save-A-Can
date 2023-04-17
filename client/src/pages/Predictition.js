@@ -2,6 +2,7 @@ import { UserAuth } from "../components/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import * as tf from '@tensorflow/tfjs';
 import { loadGraphModel } from '@tensorflow/tfjs';
+import MapPredict from "./MapPredict";
 // Labels
 const Result = {
     0: "Aerosol",
