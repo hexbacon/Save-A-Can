@@ -15,7 +15,7 @@ const center = {
 const Map = () => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyBn9RFAgxJtKPzsNfhYIXzEYZDq7rgLdi4"
+    googleMapsApiKey: process.env.REACT_APP_MAP_API_KEY
   })
 
   const [map, setMap] = useState(null)
@@ -32,6 +32,7 @@ const Map = () => {
     setMap(null)
   }, [])
 
+  console.log(process.env);
   return isLoaded ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
