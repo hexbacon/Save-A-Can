@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import * as tf from '@tensorflow/tfjs';
 import { loadGraphModel } from '@tensorflow/tfjs';
 import MapPredict from "./MapPredict";
+import { useState } from "react";
 // Labels
 const Result = {
     0: "Aerosol",
@@ -26,6 +27,7 @@ const url = {
 
 
 let model;
+let label;
 
 // Helper funciton to load mode
 const loadModel = async () => {
@@ -40,6 +42,7 @@ const loadModel = async () => {
     }
 }
 const Prediction = () => {
+    const [predictionComplete, setPredictionComplete] = useState(false);
     const { user, logout } = UserAuth();
     const navigate = useNavigate();
     const handleLogOut = async () => {
@@ -58,7 +61,6 @@ const Prediction = () => {
             console.log("Model not loaded");
             return;
         }
-        const resultList = document.getElementById("list");
         // Start processing image
         const image = document.getElementById("selected-image");
         const preImage = tf.browser.fromPixels(image, 3)
@@ -81,13 +83,9 @@ const Prediction = () => {
                 .sort((first, second) => {
                     return second.probability - first.probability;
                 })
-                .slice(0, 13);
-
-            // Insert in the result
-            resultList.innerHTML = "";
-            order.forEach((p) => {
-                resultList.insertAdjacentHTML("beforeend", `<li>${p.className}: ${parseInt(Math.trunc(p.probability * 100))} %</li>`);
-            });
+                .slice(0, 1);
+            label = order[0].className;
+            setPredictionComplete(true)
         } catch (error) {
             console.log(error);
         }
@@ -131,6 +129,7 @@ const Prediction = () => {
                 </div>
             </div>
             <button onClick={handleLogOut}>LogOut</button>
+            {predictionComplete && <MapPredict item={label} />}
         </>
     )
 }
