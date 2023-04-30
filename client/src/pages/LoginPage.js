@@ -20,7 +20,6 @@ const LoginPage = () => {
             console.log(error);
         }
     }
-
     const handleOnchnage = (e) => {
         switch (e.target.id) {
             case "FirstName":
