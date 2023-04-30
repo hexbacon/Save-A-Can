@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React, { useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 import "./App.css"
 
@@ -26,23 +26,23 @@ const App = () => {
 		<div className="App">
 			<Header />
 			<AuthContextProvider>
-			<Routes>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/about-us" element={<AboutPage />} />
-				
-				<Route path="/team" element={<TeamPage />} />
-				<Route path="/sign-up" element={<SignUpPage />} />
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/students" element={<Students/>}/>
-				<Route path="/teachers" element={<Teachers/>}/>
-				<Route path="/leaders" element={<Leaders/>}/>
-				<Route path="/events" element={<Events/>}/>  
-				
-				<Route path="/prediction" element={<PrivateRoute><Prediction /></PrivateRoute>} />
-			</Routes>
+				<Routes>
+					<Route path="/" element={<HomePage />} />
+					<Route path="/about-us" element={<AboutPage />} />
+
+					<Route path="/team" element={<TeamPage />} />
+					<Route path="/sign-up" element={<SignUpPage />} />
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="/students" element={<Students />} />
+					<Route path="/teachers" element={<Teachers />} />
+					<Route path="/leaders" element={<Leaders />} />
+					<Route path="/events" element={<Events />} />
+
+					<Route path="/prediction" element={<PrivateRoute><Prediction /></PrivateRoute>} />
+				</Routes>
 			</AuthContextProvider>
 			<Footer />
-			
+
 		</div>
 	)
 }

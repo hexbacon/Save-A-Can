@@ -15,7 +15,7 @@ export const closeOption = {
     fillColor: "#8BC34A"
 }
 
-export const MiddelOption = {
+export const middelOption = {
     ...defaultOptions,
     zIndex : 2,
     fillOpacity: 0.05,
