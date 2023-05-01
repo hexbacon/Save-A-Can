@@ -6,7 +6,7 @@ import { closeOption, middelOption, farOption } from './CircleData';
 // Define container size for Google Map
 const containerStyle = {
   width: '600px',
-  height: '1000px'
+  height: '700px'
 };
 
 const Map = () => {
@@ -24,8 +24,8 @@ const Map = () => {
   const options = useMemo(() => ({
     disableDefaultUI: true,
     clickableIcons: false,
-    mapId: "d23610f9de71a40c",
-    // light mode a15b2059c20005a5
+    //mapId: "d23610f9de71a40c",
+    mapId: "a15b2059c20005a5",
   }), []);
 
   // Set state for the current office location and found locations
