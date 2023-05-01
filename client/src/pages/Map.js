@@ -61,23 +61,24 @@ const Map = () => {
     // Remove all markers from the map
     const markers = mapRef.current?.getMarkers();
     markers && markers.forEach((marker) => marker.setMap(null));
-  
+
     // Remove all circles from the map
     const circles = mapRef.current?.getOverlays();
     circles && circles.forEach((circle) => circle.setMap(null));
-  
+
     // Reset the office state to an empty object
     setOffice({});
-  
+
     setMap(null)
   }, []);
 
   const getDirections = (destination) => {
+    // If office is not set,  return
     if (!office) {
       console.error('User location not available');
       return;
     }
-
+    // Create direction service
     const directionsService = new window.google.maps.DirectionsService();
     directionsService.route(
       {
@@ -85,6 +86,7 @@ const Map = () => {
         destination: destination,
         travelMode: window.google.maps.TravelMode.DRIVING,
       },
+      // Get response
       (result, status) => {
         if (status === window.google.maps.DirectionsStatus.OK) {
           setDirectionsResult(result);
@@ -96,20 +98,25 @@ const Map = () => {
   };
 
   // Function to get the user's current location
-  const getCurrentLocation =() => {
+  const getCurrentLocation = () => {
+    // Start HTML Geolocation
+    // If Geolocation is available
     if (navigator.geolocation) {
+      // Get current position
       navigator.geolocation.getCurrentPosition((position) => {
         let pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         }
+        // Set pos to office
         setOffice(pos);
       })
     }
   };
 
-
+  // Make Request Text Search Handler
   const makeServiceRequest = () => {
+    // Create Request Format
     const request = {
       location: center,
       radius: 7500,
@@ -119,19 +126,22 @@ const Map = () => {
         { type: 'Metal', query: 'Recycling Center For Metal' },
       ],
     };
-  
+
     const tempLocations = [];
-  
+
+    // Loop througth query array, create tailored request
     for (let a = 0; a < request.query.length; a++) {
       let tailoredRequest = {
         location: center,
         radius: 7500,
         query: request.query[a].query,
       };
-  
+
       // Make Request
       service.textSearch(tailoredRequest, (result, status) => {
+        // If Reponse is OK
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+          // Itirate response, create object with wanted info
           for (let i = 0; i < result.length; i++) {
             const name = result[i].name;
             const address = result[i].formatted_address;
@@ -144,7 +154,7 @@ const Map = () => {
               type: request.query[a].type,
               icon: result[i].icon
             };
-            console.log(place.icon);
+            // Push place to location
             tempLocations.push(place);
           }
           setLocation(tempLocations);
@@ -154,7 +164,8 @@ const Map = () => {
       });
     }
   };
-  
+
+  // Marker designation
   const getMarkerIcon = (type) => {
     let color;
     switch (type) {
@@ -176,6 +187,7 @@ const Map = () => {
     };
   };
 
+  // infoWindon Open Handler
   const onInfoWindowOpen = (index) => {
     // Get directions to the clicked marker
     getDirections(locations[index]);
@@ -189,14 +201,16 @@ const Map = () => {
       })
     );
   };
-  
 
+  // infoWindow Close Handler
   const onInfoWindowClose = (index) => {
     const updatedLocations = [...locations];
     updatedLocations[index].isOpen = false;
     setLocation(updatedLocations);
   }
+  // If Map is loaded
   return isLoaded ? (
+    // Create Google Map 
     <GoogleMap
       mapContainerStyle={containerStyle}
       defaultCenter={center}
@@ -206,6 +220,7 @@ const Map = () => {
       options={options}
     >
       {office && (
+        // Consditional Rendering
         <>
           <Marker position={office} icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png" />
           <Circle onLoad={makeServiceRequest} center={office} radius={2500} options={closeOption} />
@@ -213,6 +228,7 @@ const Map = () => {
           <Circle center={office} radius={7500} options={farOption} />
         </>
       )}
+      {/*Create Markers and infoWindows */}
       {Array.isArray(locations) &&
         locations.map((location, index) => (
           <Marker
