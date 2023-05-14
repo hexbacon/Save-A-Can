@@ -3,8 +3,6 @@ import {useNavigate } from 'react-router-dom';
 import { UserAuth } from '../components/auth/AuthContext';
 
 const LoginPage = () => {
-    const [FirstName, setFirstName] = useState("")
-    const [LastName, setLastName] = useState("")
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
     const { signIn } = UserAuth();
@@ -22,12 +20,6 @@ const LoginPage = () => {
     }
     const handleOnchnage = (e) => {
         switch (e.target.id) {
-            case "FirstName":
-                setFirstName(e.target.value)
-                break;
-            case "LastName":
-                setLastName(e.target.value)
-                break;
             case "Email":
                 setEmail(e.target.value)
                 break;

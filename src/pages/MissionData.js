@@ -1,9 +1,9 @@
 import { Component } from "react";
 import "./MissionStyle.css";
-import Mission1 from '../images/m1.jpg';
-import Mission2 from '../images/m2.jpg';
-import Mission3 from '../images/m3.jpg';
-import Mission4 from '../images/m4.jpg';
+////import Mission1 from '../images/m1.jpg';
+//import Mission2 from '../images/m2.jpg';
+//import Mission3 from '../images/m3.jpg';
+//import Mission4 from '../images/m4.jpg';
 
 class MissionData extends Component {
   render() {

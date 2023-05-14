@@ -55,7 +55,7 @@ const MapPredict = ({item}) => {
       setMap(map);
       setService(service);
     },
-    []
+    [center]
   );
 
   // Callback function to be executed when the Google Map instance is unmounted
@@ -109,49 +109,52 @@ const MapPredict = ({item}) => {
       })
     }
   };
+  
+
+  const makeServiceRequest = useCallback(() => {
+    const request = {
+      location: office,
+      radius: 7500,
+      query: `Recycling Center ${item}`,
+    };
+  
+    const tempLocations = [];
+    // Make Request
+    service.textSearch(request, (result, status) => {
+      if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+        for (let i = 0; i < result.length; i++) {
+          const name = result[i].name;
+          const address = result[i].formatted_address;
+          const place = {
+            lat: result[i].geometry.location.lat(),
+            lng: result[i].geometry.location.lng(),
+            name,
+            address,
+            isOpen: false,
+            type: request.query.type,
+            icon: result[i].icon,
+          };
+          console.log(place.icon);
+          tempLocations.push(place);
+        }
+        setLocation(tempLocations);
+      }
+      map.setCenter(office);
+      map.setZoom(15);
+    });
+  }, [office, service, item, map]);
+
 
   useEffect(() => {
     if (office && service) {
       // Clear locations and directions before making a new request
       setLocation([]);
       setDirectionsResult(null);
-
+  
       makeServiceRequest();
     }
-  }, [office, service, item]);
-
-  const makeServiceRequest = () => {
-    const request = {
-      location: office,
-      radius: 7500,
-      query: `Recycling Center ${item}`
-    };
+  }, [office, service, item, makeServiceRequest]);
   
-    const tempLocations = [];
-      // Make Request
-      service.textSearch(request, (result, status) => {
-        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-          for (let i = 0; i < result.length; i++) {
-            const name = result[i].name;
-            const address = result[i].formatted_address;
-            const place = {
-              lat: result[i].geometry.location.lat(),
-              lng: result[i].geometry.location.lng(),
-              name,
-              address,
-              isOpen: false,
-              type: request.query.type,
-              icon: result[i].icon
-            };
-            console.log(place.icon);
-            tempLocations.push(place);
-          }
-          setLocation(tempLocations);
-        }
-        map.setCenter(office);
-        map.setZoom(15);
-      });
-    }
   
   const getMarkerIcon = (type) => {
     let color;

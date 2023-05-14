@@ -3,8 +3,6 @@ import { UserAuth } from '../components/auth/AuthContext'
 import { useNavigate } from 'react-router-dom'
 //Set up state to hold the user's sign-up information:
 const SignUpPage = (props) => {
-    const [FirstName, setFirstName] = useState("")
-    const [LastName, setLastName] = useState("")
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
     const { createUser } = UserAuth();
@@ -24,12 +22,6 @@ const SignUpPage = (props) => {
 
     const handleOnchnage = (e) => {
         switch (e.target.id) {
-            case "FirstName":
-                setFirstName(e.target.value)
-                break;
-            case "LastName":
-                setLastName(e.target.value)
-                break;
             case "Email":
                 setEmail(e.target.value)
                 break;

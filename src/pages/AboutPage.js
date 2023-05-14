@@ -1,8 +1,8 @@
 import React from 'react';
-import Mission from './Mission';
-import Blog from './Blog';
-import img2 from '../images/About1.jpg';
-import img3 from '../images/headshot.jpeg';
+//import Mission from './Mission';
+//import Blog from './Blog';
+//import img2 from '../images/About1.jpg';
+//import img3 from '../images/headshot.jpeg';
 
 function AboutUsPage(props) {
 	const profiles = [

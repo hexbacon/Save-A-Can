@@ -1,5 +1,5 @@
 import React from 'react';
-import videoBg from '../videos/video.mp4'
+//import videoBg from '../videos/video.mp4'
 import './MissionStyle.css'
 import Map from './Map';
 // import Course from './Course';
