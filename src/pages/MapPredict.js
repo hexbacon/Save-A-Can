@@ -40,20 +40,23 @@ const MapPredict = ({item}) => {
   const [service, setService] = useState(null);
 
   // Callback function to be executed when the Google Map instance is loaded
-  const onLoad = useCallback(function callback(map) {
-    // Set the bounds for the map to be the center location
-    const bounds = new window.google.maps.LatLngBounds(center);
+  const onLoad = useCallback(
+    function callback(map) {
+      // Set the bounds for the map to be the center location
+      const bounds = new window.google.maps.LatLngBounds(center);
 
-    // Create a PlacesService instance for the map
-    const service = new window.google.maps.places.PlacesService(map);
+      // Create a PlacesService instance for the map
+      const service = new window.google.maps.places.PlacesService(map);
 
-    // Fit the map to the bounds and set the map reference and service state
-    map.fitBounds(bounds);
-    mapRef.current = map;
-    getCurrentLocation();
-    setMap(map);
-    setService(service);
-  }, []);
+      // Fit the map to the bounds and set the map reference and service state
+      map.fitBounds(bounds);
+      mapRef.current = map;
+      getCurrentLocation();
+      setMap(map);
+      setService(service);
+    },
+    []
+  );
 
   // Callback function to be executed when the Google Map instance is unmounted
   const onUnmount = useCallback(function callback(map) {
@@ -109,9 +112,13 @@ const MapPredict = ({item}) => {
 
   useEffect(() => {
     if (office && service) {
+      // Clear locations and directions before making a new request
+      setLocation([]);
+      setDirectionsResult(null);
+
       makeServiceRequest();
     }
-  }, [office, service]);
+  }, [office, service, item]);
 
   const makeServiceRequest = () => {
     const request = {
