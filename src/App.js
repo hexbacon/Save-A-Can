@@ -27,9 +27,9 @@ const App = () => {
 			<Header />
 			<AuthContextProvider>
 				<Routes>
-					<Route path="/" element={<HomePage />} />
+				<div>
+				<Route path="/" element={<HomePage />} />
 					<Route path="/about-us" element={<AboutPage />} />
-
 					<Route path="/team" element={<TeamPage />} />
 					<Route path="/sign-up" element={<SignUpPage />} />
 					<Route path="/login" element={<LoginPage />} />
@@ -37,8 +37,8 @@ const App = () => {
 					<Route path="/teachers" element={<Teachers />} />
 					<Route path="/leaders" element={<Leaders />} />
 					<Route path="/events" element={<Events />} />
-
 					<Route path="/prediction" element={<PrivateRoute><Prediction /></PrivateRoute>} />
+				</div>
 				</Routes>
 			</AuthContextProvider>
 			<Footer />
