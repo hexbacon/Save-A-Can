@@ -13,7 +13,7 @@ const MapPredict = ({item}) => {
   // Load Google Maps API with specified options and libraries
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: process.env.REACT_APP_MAP_API_KEY,
+    googleMapsApiKey: 'AIzaSyBPUWIzxsN6Rff72FXFNdLNfrhfbj8m5U4',
     libraries: ['places'],
   });
 
