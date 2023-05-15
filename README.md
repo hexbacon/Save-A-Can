@@ -8,6 +8,8 @@
 
 [Documentation](#documentation)
 
+[Known Issues](#known-issues)
+
 ## Introduction
 
 Save A Can is a cutting-edge Web App developed using ReactJS, a popular JavaScript library for building user interfaces. The primary goal of Save-A-Can is to promote environmental sustainability by making recycling more accessible and profitable for its users. The app achieves this by employing a custom TensorFlow model to accurately identify recyclable objects and providing users with the nearest recycling centers where they can turn in these items for a profit.
@@ -394,3 +396,8 @@ export default App;
 * `react`: For creating the React component.
 * `react-router-dom`: For navigating to the root page if the user is not authenticated.
 * `UserAuth` context: For accessing the `user` object to check if the user is authenticated.
+
+
+## Known Issues
+
+1. App may stopped rendering after interacting with the map.
