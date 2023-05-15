@@ -20,15 +20,15 @@ Key features of Save-A-Can include:
 
 ## Guide
 
-# Save-A-Can
+### Save-A-Can
 
 Save-A-Can is a web application designed to help users identify recyclable materials and locate the nearest recycling centers. By using a machine learning model, the app predicts the type of recyclable material based on an uploaded image and displays nearby recycling centers on a map.
 
-## Getting Started
+#### Getting Started
 
 Visit the Save-A-Can website at https://saveacan.netlify.app/ to access the application.
 
-## Features
+#### Features
 
 - User authentication with email and password
 - Image upload and processing for recyclable material identification
@@ -36,7 +36,7 @@ Visit the Save-A-Can website at https://saveacan.netlify.app/ to access the appl
 - Interactive map displaying nearby recycling centers accepting the identified material
 - Directions to selected recycling centers from the user's current location
 
-## Usage
+#### Usage
 
 1. **Create an account**: Click on the "Sign Up" button and provide your email address and a password to create an account. If you already have an account, click "Log In" to sign in with your email and password.
 
@@ -50,21 +50,21 @@ Visit the Save-A-Can website at https://saveacan.netlify.app/ to access the appl
 
 6. **Log out**: When you're done using the app, click the "Log Out" button to log out of your account.
 
-## Contributing
+#### Contributing
 
 Feel free to submit issues or pull requests to improve the Save-A-Can application.
 
-## License
+#### License
 
 This project is open-source and available under the [MIT License](LICENSE).
 
-## Acknowledgements
+#### Acknowledgements
 
 - Machine learning model provided by [hexbacon](https://github.com/hexbacon/Model)
 - Google Maps API for map integration and location services
 - Firebase for user authentication and backend services
 
-## Support
+#### Support
 
 Share the Save-A-Can application with friends and family to promote responsible waste disposal and contribute to a cleaner, greener environment.
 
