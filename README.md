@@ -6,6 +6,54 @@
 
 [Guide](#guide)
 
+# Save-A-Can
+
+Save-A-Can is a web application designed to help users identify recyclable materials and locate the nearest recycling centers. By using a machine learning model, the app predicts the type of recyclable material based on an uploaded image and displays nearby recycling centers on a map.
+
+## Getting Started
+
+Visit the Save-A-Can website at https://saveacan.netlify.app/ to access the application.
+
+## Features
+
+- User authentication with email and password
+- Image upload and processing for recyclable material identification
+- Machine learning model for recyclable material prediction
+- Interactive map displaying nearby recycling centers accepting the identified material
+- Directions to selected recycling centers from the user's current location
+
+## Usage
+
+1. **Create an account**: Click on the "Sign Up" button and provide your email address and a password to create an account. If you already have an account, click "Log In" to sign in with your email and password.
+
+2. **Upload an image**: Once you are logged in, you will see an input field to upload an image. Click on the input field or drag and drop an image of the item you want to identify. The app accepts images in common formats like JPEG, PNG, and GIF.
+
+3. **Predict the recyclable material**: After uploading the image, click the "Predict" button. The app will process the image and display the predicted recyclable material (e.g., aerosol, battery, cardboard, food can, etc.).
+
+4. **View nearby recycling centers**: Once the prediction is complete, the app will display a map with markers for nearby recycling centers that accept the identified material. You can interact with the map to zoom in and out or click on individual markers to see more information about the recycling center, such as its name and address.
+
+5. **Get directions**: By clicking on a recycling center marker, you can also access directions from your current location to the recycling center. Follow these directions to reach the recycling center and responsibly dispose of your recyclable item.
+
+6. **Log out**: When you're done using the app, click the "Log Out" button to log out of your account.
+
+## Contributing
+
+Feel free to submit issues or pull requests to improve the Save-A-Can application.
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+- Machine learning model provided by [hexbacon](https://github.com/hexbacon/Model)
+- Google Maps API for map integration and location services
+- Firebase for user authentication and backend services
+
+## Support
+
+Share the Save-A-Can application with friends and family to promote responsible waste disposal and contribute to a cleaner, greener environment.
+
 [Documentation](#documentation)
 
 ## Introduction
