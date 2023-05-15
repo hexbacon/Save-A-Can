@@ -111,7 +111,7 @@ const loadModel = async () => {
       reader.readAsDataURL(file);
     }
     return (
-        <>
+        <div className="prediction-container">
             <h1 onLoad={loadModel}>Welcome</h1>
             <p>User Email: {user && user.email}</p>
             <div className="input-container form">
@@ -135,7 +135,7 @@ const loadModel = async () => {
             </div>
             <button onClick={handleLogOut}>LogOut</button>
             {predictionComplete && <MapPredict item={label} />}
-        </>
+        </div>
     )
 }
 

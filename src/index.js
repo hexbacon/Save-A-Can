@@ -12,7 +12,7 @@ import "./styles/home-page.scss"
 import "./styles/footer.scss"
 import "./styles/about-us.scss"
 import "./styles/signup.scss"
-
+import "./styles/Prediction.scss"
 
 // React 17 style loading of application
 ReactDOM.render(
