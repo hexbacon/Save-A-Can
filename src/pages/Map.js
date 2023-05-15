@@ -54,7 +54,7 @@ const Map = () => {
     getCurrentLocation();
     setMap(map);
     setService(service);
-  }, []);
+  }, [center]);
 
   // Callback function to be executed when the Google Map instance is unmounted
   const onUnmount = useCallback(function callback(map) {
