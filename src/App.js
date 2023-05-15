@@ -27,7 +27,6 @@ const App = () => {
 			<Header />
 			<AuthContextProvider>
 				<Routes>
-				<div>
 				<Route path="/" element={<HomePage />} />
 					<Route path="/about-us" element={<AboutPage />} />
 					<Route path="/team" element={<TeamPage />} />
@@ -38,7 +37,6 @@ const App = () => {
 					<Route path="/leaders" element={<Leaders />} />
 					<Route path="/events" element={<Events />} />
 					<Route path="/prediction" element={<PrivateRoute><Prediction /></PrivateRoute>} />
-				</div>
 				</Routes>
 			</AuthContextProvider>
 			<Footer />
