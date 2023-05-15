@@ -5,7 +5,7 @@ import logo from '../images/logoImg.png';
 
 
 const Header = () => {
-    const { open, setOpen } = useContext(MainContext)
+    const {setOpen } = useContext(MainContext)
     const userId = localStorage.getItem("userId")
 
     useEffect(() => {
