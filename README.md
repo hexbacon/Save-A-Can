@@ -6,6 +6,20 @@
 
 [Guide](#guide)
 
+[Documentation](#documentation)
+
+## Introduction
+
+Save A Can is a cutting-edge Web App developed using ReactJS, a popular JavaScript library for building user interfaces. The primary goal of Save-A-Can is to promote environmental sustainability by making recycling more accessible and profitable for its users. The app achieves this by employing a custom TensorFlow model to accurately identify recyclable objects and providing users with the nearest recycling centers where they can turn in these items for a profit.
+
+Key features of Save-A-Can include:
+
+1. Full Sign-Up System: Save-A-Can offers a comprehensive registration process, enabling users to create their accounts and securely store their personal information.
+2. Custom CNN Model: Save-A-Can utilizes a state-of-the-art Convolutional Neural Network (CNN) model to accurately identify various recyclable materials. The model has been meticulously trained on a vast dataset of images, allowing it to recognize different types of plastics, metals, glass, and paper products. This feature makes it easier for users to determine which items can be recycled, ultimately reducing waste and promoting sustainability.
+3. Interactive Map: Save-A-Can incorporates an intuitive, user-friendly map that highlights the recycling facilities within the user's vicinity. By providing real-time information on the nearest recycling centers, the app encourages users to recycle more frequently and conveniently. This feature also includes essential details about each facility, such as hours of operation, accepted materials, and potential financial incentives for recycling.
+
+## Guide
+
 # Save-A-Can
 
 Save-A-Can is a web application designed to help users identify recyclable materials and locate the nearest recycling centers. By using a machine learning model, the app predicts the type of recyclable material based on an uploaded image and displays nearby recycling centers on a map.
@@ -53,20 +67,6 @@ This project is open-source and available under the [MIT License](LICENSE).
 ## Support
 
 Share the Save-A-Can application with friends and family to promote responsible waste disposal and contribute to a cleaner, greener environment.
-
-[Documentation](#documentation)
-
-## Introduction
-
-Save A Can is a cutting-edge Web App developed using ReactJS, a popular JavaScript library for building user interfaces. The primary goal of Save-A-Can is to promote environmental sustainability by making recycling more accessible and profitable for its users. The app achieves this by employing a custom TensorFlow model to accurately identify recyclable objects and providing users with the nearest recycling centers where they can turn in these items for a profit.
-
-Key features of Save-A-Can include:
-
-1. Full Sign-Up System: Save-A-Can offers a comprehensive registration process, enabling users to create their accounts and securely store their personal information.
-2. Custom CNN Model: Save-A-Can utilizes a state-of-the-art Convolutional Neural Network (CNN) model to accurately identify various recyclable materials. The model has been meticulously trained on a vast dataset of images, allowing it to recognize different types of plastics, metals, glass, and paper products. This feature makes it easier for users to determine which items can be recycled, ultimately reducing waste and promoting sustainability.
-3. Interactive Map: Save-A-Can incorporates an intuitive, user-friendly map that highlights the recycling facilities within the user's vicinity. By providing real-time information on the nearest recycling centers, the app encourages users to recycle more frequently and conveniently. This feature also includes essential details about each facility, such as hours of operation, accepted materials, and potential financial incentives for recycling.
-
-## Guide
 
 ## Documentation
 
