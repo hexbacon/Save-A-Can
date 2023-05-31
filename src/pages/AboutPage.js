@@ -16,6 +16,16 @@ function AboutUsPage(props) {
 		},
 		{
 			image: "https://media.discordapp.net/attachments/1029905103693557790/1029905777793716274/IMG_20220625_212456_479.jpg?width=511&height=511",
+			name: "Christopher Mena",
+			college: "CUNY - Hunter College",
+			LinkedIn: "https://www.linkedin.com/in/chrismenatavares/",
+			role: "ML Developer",
+			email: "christopher.mena66@myhunter.cuny.edu"
+		}
+		/*
+		
+		{
+			image: "https://media.discordapp.net/attachments/1029905103693557790/1029905777793716274/IMG_20220625_212456_479.jpg?width=511&height=511",
 			name: "Pakeeza Rashid",
 			college: "CUNY - Hunter College",
 			LinkedIn: "https://www.linkedin.com/in/pakeeza-rashid-b44b24221/",
@@ -45,7 +55,8 @@ function AboutUsPage(props) {
 			LinkedIn: "https://www.linkedin.com/in/robert-szabo-b28a66159/",
 			role: "Back-End Developer",
 			email: "robertmszabo@gmail.com"
-		}
+		}*/
+		
 	]
 	return (
 		<div className='AboutPage container'>
