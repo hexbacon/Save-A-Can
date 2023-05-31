@@ -19,10 +19,10 @@ function AboutUsPage(props) {
 			name: "Christopher Mena",
 			college: "CUNY - Hunter College",
 			LinkedIn: "https://www.linkedin.com/in/chrismenatavares/",
-			role: "ML Developer",
+			role: "ML & Back-End Developer",
 			email: "christopher.mena66@myhunter.cuny.edu"
-		}
-		/*
+		},
+		
 		
 		{
 			image: "https://media.discordapp.net/attachments/1029905103693557790/1029905777793716274/IMG_20220625_212456_479.jpg?width=511&height=511",
@@ -32,14 +32,7 @@ function AboutUsPage(props) {
 			role: "ML Developer",
 			email: "Pakeezarashid27@gmail.com"
 		},
-		{
-			image: "https://media.discordapp.net/attachments/1029905103693557790/1029905777793716274/IMG_20220625_212456_479.jpg?width=511&height=511",
-			name: "Christopher Mena",
-			college: "CUNY - Hunter College",
-			LinkedIn: "https://www.linkedin.com/in/chrismenatavares/",
-			role: "ML Developer",
-			email: "christopher.mena66@myhunter.cuny.edu"
-		},
+		
 		{
 			image: "https://media.discordapp.net/attachments/1029905103693557790/1029905777793716274/IMG_20220625_212456_479.jpg?width=511&height=511",
 			name: "Yosef Samman",
@@ -55,7 +48,7 @@ function AboutUsPage(props) {
 			LinkedIn: "https://www.linkedin.com/in/robert-szabo-b28a66159/",
 			role: "Back-End Developer",
 			email: "robertmszabo@gmail.com"
-		}*/
+		}
 		
 	]
 	return (
